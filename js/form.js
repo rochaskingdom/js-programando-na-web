@@ -3,17 +3,17 @@ botaoAdicionar.addEventListener("click", function () {
     event.preventDefault();
 
     var form = document.querySelector("#form-adiciona");
-    var paciente = obtemPacienteDoFormulario(form);    
+    var paciente = obtemPacienteDoFormulario(form);
 
     var erros = validaPaciente(paciente);
 
-    if(erros.length > 0) {
+    if (erros.length > 0) {
         exibeMensagensDeErro(erros);
-        return; 
+        return;
     }
 
     adicionaPacienteNaTabela(paciente);
-    
+
     form.reset();
     var menasagensErro = document.querySelector("#mensagens-erro");
     menasagensErro.innerHTML = "";
@@ -33,7 +33,7 @@ function exibeMensagensDeErro(erros) {
     var ul = document.querySelector("#mensagens-erro");
     ul.innerHTML = "";
 
-    erros.forEach(function(erro) {
+    erros.forEach(function (erro) {
         var li = document.createElement("li");
         li.textContent = erro;
 
@@ -67,7 +67,7 @@ function montaTr(paciente) {
     return pacienteTr;
 }
 
-function montaTd(dado,classe) {
+function montaTd(dado, classe) {
 
     var td = document.createElement("td");
     td.textContent = dado;
@@ -80,32 +80,32 @@ function validaPaciente(paciente) {
 
     var erros = [];
 
-    if(paciente.nome.length === 0) {
+    if (paciente.nome.length === 0) {
         erros.push("O nome nao pode ser em branco");
     }
 
-    if(!validaPeso(paciente.peso)) {
-        
+    if (!validaPeso(paciente.peso)) {
+
         erros.push("Peso e invalido");
     }
 
-    if(!validaAltura(paciente.altura)) {
+    if (!validaAltura(paciente.altura)) {
 
         erros.push("Altura e invalida");
     }
 
-    if(paciente.gordura.length === 0) {
+    if (paciente.gordura.length === 0) {
         erros.push("A gordura nao pode ser em branco");
     }
 
-    if(paciente.peso.length === 0) {
+    if (paciente.peso.length === 0) {
         erros.push("O peso nao pode ser em branco");
     }
 
-    if(paciente.altura.length === 0) {
+    if (paciente.altura.length === 0) {
         erros.push("A altura nao pode ser em branco");
     }
 
     return erros;
-    
+
 }
