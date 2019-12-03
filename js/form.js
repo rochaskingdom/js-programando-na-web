@@ -10,7 +10,7 @@ botaoAdicionar.addEventListener("click", function () {
     var pacienteTr = montaTr(paciente);
 
     var erros = validaPaciente(paciente);
-    console.log(erros);    
+
     if(erros.length > 0) {
         exibeMensagensDeErro(erros);
         return;
